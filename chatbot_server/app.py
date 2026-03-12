@@ -4,19 +4,16 @@ import os
 import json
 from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-import os
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 import google.generativeai as genai
-from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts import PromptTemplate
 from dotenv import load_dotenv
 
-
 load_dotenv()
 
-os.environ["GOOGLE_API_KEY"] = "AIzaSyCYeE0wT2nMhNV5aIwp1tpLrdKc37GRizM"
 app = Flask(__name__)
 flask_cors.CORS(app)
 
@@ -47,7 +44,7 @@ def get_conversational_chain():
     Answer:
     """
 
-    model = ChatGoogleGenerativeAI(model="gemini-pro", temperature=0.3)
+    model = ChatGoogleGenerativeAI(model="gemini-1.5-pro", temperature=0.3)
     prompt = PromptTemplate(template=prompt_template, input_variables=["context", "question"])
     chain = load_qa_chain(model, chain_type="stuff", prompt=prompt)
 
@@ -62,9 +59,9 @@ def user_input(user_question):
     response = chain({"input_documents": docs, "question": user_question}, return_only_outputs=True)
 
     return response
-def reco():
 
-    response = model.generate_content('''You are a helpful Customer support Assistant who answers users' questions regarding the best payment method based on the following criteria:
+def reco():
+    prompt_text = '''You are a helpful Customer support Assistant who answers users' questions regarding the best payment method based on the following criteria:
 
     1. Amazon pay upi = 8 times successful
     2. cash on delivery/pay on delivery = 4 times successful
@@ -82,29 +79,32 @@ def reco():
     - 25% weight for discounts.
     - 20% weight for cashback or gift cards.
 
-    Based on these criteria, calculate the scores for each payment method and rank them from best to least. Return the list in plain text format. give the answer in object format like json. order the payment options in decending order. dont write the word json on top, just give the object''')
-    re = response.text
-    re = re[4:]
-    re = re[:-3]
-    json_data = json.loads(re)
+    Based on these criteria, calculate the scores for each payment method and rank them from best to least. Return the list in plain text format. give the answer in object format like json. order the payment options in decending order. dont write the word json on top, just give the object'''
+
+    response = model.generate_content(prompt_text)
+    
+    cleaned_response = response.text.replace("```json", "").replace("```", "").strip()
+    json_data = json.loads(cleaned_response)
+    
     return jsonify(json_data)
 
+try:
+    raw_text = get_pdf_text("chatdata.pdf")
+    text_chunks = get_text_chunks(raw_text)
+    get_vector_store(text_chunks)
+except FileNotFoundError:
+    pass
 
-raw_text = get_pdf_text("chatdata.pdf")
-text_chunks = get_text_chunks(raw_text)
-get_vector_store(text_chunks)
 def res(user_question):
     return user_input(user_question)
 
-model = genai.GenerativeModel('gemini-pro')
+model = genai.GenerativeModel('gemini-1.5-pro')
 
 @app.route("/predict", methods=["POST"])
 def predict():
     request_data = request.get_json()
     user_question = request_data["message"]
-    print(user_question)
     response = res(user_question)
-    # print()
     message = {"answer": response["output_text"]}
     return jsonify(message)
 
