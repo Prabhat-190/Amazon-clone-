@@ -2,27 +2,27 @@
 
 **Theme**: *Personalized Payment Experiences and Financial Management*
 
-**Team Name**: *Audacious Aloos*
+**Developer**: *Prabhat*
 
 # Prototype Resources
-- Deployed on Website: [Website Link]()
-- Presentation of Idea Submission Round: [Link](https:https://drive.google.com/file/d/1AhioLcVCcb-sBeAOK1n7BPFl8f5TeXXr/view?usp=sharing
+- Deployed on Website: [Add Your Vercel Link Here]
+- Presentation of Idea Submission Round: [Link](https://drive.google.com/file/d/1AhioLcVCcb-sBeAOK1n7BPFl8f5TeXXr/view?usp=sharing)
 
 # Prototype Images
 1. **Payment Assistant Smart Payments**
 
-    ![image](https://github.com/AAnimeshTripathy/Amazon-hackon/blob/main/images/chatbot.jpg)
+   ![image](https://github.com/Prabhat-190/Amazon-clone-/blob/main/images/chatbot.jpg?raw=true)
     
 2. **Budget Dashboard and Management Tools**
 
-    ![image](https://github.com/AAnimeshTripathy/Amazon-hackon/blob/main/images/dashboard.jpg)
+   ![image](https://github.com/Prabhat-190/Amazon-clone-/blob/main/images/dashboard.jpg?raw=true)
     
 3. **Smart Payment**
 
-    ![image](https://github.com/AAnimeshTripathy/Amazon-hackon/blob/main/images/paymentrecommendationpage.jpg)
+   ![image](https://github.com/Prabhat-190/Amazon-clone-/blob/main/images/paymentrecommendationpage.jpg?raw=true)
 
 # Introduction
-Welcome to the Audacious Aloos' Amazon Payment and Financial Management Assistant project! Our solution aims to revolutionize the way you manage your finances and payment experiences on Amazon. We understand that keeping track of transactions, optimizing payment methods, and managing budgets can be daunting. That's why we've developed a comprehensive AI-powered assistant to help you streamline these processes.
+Welcome to the Amazon Payment and Financial Management Assistant project! Our solution aims to revolutionize the way you manage your finances and payment experiences on Amazon. We understand that keeping track of transactions, optimizing payment methods, and managing budgets can be daunting. That's why we've developed a comprehensive AI-powered assistant to help you streamline these processes.
 
 # Project Overview
 ## Our Goal
@@ -45,41 +45,40 @@ Our solution integrates various AI and ML models to offer personalized payment r
 - **Database:** MongoDB
 - **Machine Learning:** OpenAI API, Langchain, Numpy, Pandas
 - **Cloud Services:** AWS (EC2, S3, Lambda, etc.)
-- **Other Technologies:** 
 
 # Methodology
-![image](https://github.com/AAnimeshTripathy/Amazon-hackon/blob/main/images/Flowchart.jpg)
+![image](https://github.com/Prabhat-190/Amazon-clone-/blob/main/images/Flowchart.jpg?raw=true)
 
 # Installation
 1. **Install MongoDB Community Server:** [Download Link](https://www.mongodb.com/try/download/community)
-2. **Download and Install Visual Studio 2022:** Ensure to select "Desktop development with C++". [VS Code Download Link](https://visualstudio.microsoft.com/)
+2. **Download and Install Visual Studio Code:** [VS Code Download Link](https://code.visualstudio.com/)
 3. **Clone the Repository:**
-    ```
-    git clone https://github.com/AAnimeshTripathy/Amazon-hackon.git
+    ```bash
+    git clone [https://github.com/Prabhat-190/Amazon-clone-.git](https://github.com/Prabhat-190/Amazon-clone-.git)
     ```
 4. **Setup Environment Variables:**
     - Create a `.env` file in `./backend` and add the following:
-      ```
+      ```env
       REACT_APP_BASE_URL="http://localhost:8000"
       PORT=8000
       CORS_ORIGIN=*
       MONGODB_URL='Generate-one from MongoDB Atlas'
       ```
-    - Create a `.env` file in `./frontend` and add the following:
-      ```
-      REACT_APP_API_URL = 'https://fakestoreapi.com/products'
-      REACT_APP_FIREBASE_API_KEY = 'add-yours'
+    - Create a `.env` file in `./amazon-clone-react` and add the following:
+      ```env
+      REACT_APP_API_URL='[https://fakestoreapi.com/products](https://fakestoreapi.com/products)'
+      REACT_APP_FIREBASE_API_KEY='add-yours'
       ```
 5. **Install Dependencies and Start Servers:**
     - Backend:
-      ```
+      ```bash
       cd ./backend
       npm install
       npm i -D nodemon
       npm run dev
       ```
     - Frontend:
-      ```
+      ```bash
       cd ./amazon-clone-react
       npm install
       npm start
@@ -93,8 +92,8 @@ Our solution integrates various AI and ML models to offer personalized payment r
 - **LLM-Based**: Built on Large Language Models for continuous improvements.
 - **Personalization**: Fine-tuned for Amazon users and the payment platform.
 - **Positive Impact**: Reduces customer support load, decreases response times, and provides 24/7 support.
-- **Impact Metrics**: Measures user satisfaction, reduced query resolution time, and increased productivity.
 - **Technologies Used**: Utilizes OpenAI models (GPT-3.5 Turbo), Langchain for vector similarity search, and AWS for hosting and scalability.
+
 ## Smart Payments
 - **Data Retrieval:** Utilize NoSQL databases for comprehensive data.
 - **Data Preprocessing:** Use NumPy and Pandas for data collection and preprocessing.
@@ -107,6 +106,3 @@ Our solution integrates various AI and ML models to offer personalized payment r
 - **Transaction Summary:** Implement filtering and search using Text Search algorithm.
 - **Wallet Information:** Manage and display the Amazon Pay wallet balance and recent transactions.
 - **Budgeting and Notifications:** Implement rule-based systems to notify users when spending limits are exceeded. Use time-series analysis algorithms to track and predict spending patterns, providing monthly and yearly savings reports.
-
-# Conclusion
-Our solution is designed to provide a holistic financial management experience, helping Amazon users manage their payments, budgets, and savings efficiently. By leveraging advanced AI technologies, we aim to make financial management intuitive, personalized, and effective.
